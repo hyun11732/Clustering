@@ -8,7 +8,8 @@ There are various versions in K-Mean algorithm like K-Median, K-Mode. These algo
 
 However, we should know about K-mean++ and k-Medoids. K-mean ++ selects the point that is farthest from the current centroids. K-Medoids selects the point with a raondom process by comparing with the current centroids. They both converge much faster than K-Mean algorithms.
 
+ 
 
-##Appendex
+### Appendex
 
 Saurabh Sinha. "CS 412 Intro. to Data Mining Chapter 10. Cluster Analysis". 13pg, PPT
