@@ -1,7 +1,7 @@
 import random
 import math
 
-
+# Calculate distance between points
 def distance(point1, point2):
     dim = len(point1)
     dis = 0
@@ -9,7 +9,7 @@ def distance(point1, point2):
         dis += (point1[i] - point2[i]) ** 2
     return math.sqrt(dis)
 
-
+#calculate new centroid  by calculating "mean" point in cluster
 def calculate_centroid(K, point_dic, dim):
     count = 0
     centroids = []
@@ -24,18 +24,22 @@ def calculate_centroid(K, point_dic, dim):
         centroids.append(centroid)
     return centroids
 
-
+# Takes centroids, other points and create K clusters from N number of points.
 def k_mean(N, K, points, centroids):
     past_labels = [0]
     current_labels = [1]
+    # perform the algorithm until they converge(when all points do not change after the new centroid selected)
     while past_labels != current_labels:
         past_labels = current_labels.copy()
         labels = dict()
         point_dic = dict()
+        #Create K number of cluster by a dictionary
         for i in range(K):
             point_dic[i] = []
+        # We make another dic by key of point and value of K cluster labels
         for point in points:
             labels[point] = -1
+        # determine the point's cluster by the distance to each centroid
         for point in points:
             min_dis = 1000000000000000
             min_idx = 0
@@ -73,7 +77,9 @@ if __name__ == "__main__":
             point = input()
         except:
             break;
+    #initial centroids
     initals = points[N:]
+    #All points
     points = points[:N]
     k_mean_result = k_mean(N, K, points, initals)
     for key in k_mean_result.keys():
